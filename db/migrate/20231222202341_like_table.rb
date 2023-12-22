@@ -1,4 +1,4 @@
-class LikeTable < ActiveRecord::Migration[7.1]
+class LikesTable < ActiveRecord::Migration[7.1]
   def change
     create_table :likes do |t|
       t.references :user, foreign_key: { to_table: :users }

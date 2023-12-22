@@ -1,4 +1,4 @@
-class CommentTable < ActiveRecord::Migration[7.1]
+class CommentsTable < ActiveRecord::Migration[7.1]
   def change
     create_table :comments do |t|
       t.references :user, foreign_key: { to_table: :users }
