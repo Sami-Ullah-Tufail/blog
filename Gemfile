@@ -67,3 +67,9 @@ group :test do
 end
 
 gem 'rubocop', '>= 1.0', '< 2.0'
+
+# Gemfile
+
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0'
+end
