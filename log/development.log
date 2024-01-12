@@ -999,3 +999,518 @@ Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:32:26 +0500
   
 ActionController::RoutingError (No route matches [GET] "/cart.json"):
   
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(892336952976185220)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(892336952976185220)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-01-13 02:59:10 +0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:4
+  [1m[36mPost Count (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 15]]
+  ↳ app/views/users/index.html.erb:11
+  [1m[36mPost Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 16]]
+  ↳ app/views/users/index.html.erb:11
+  [1m[36mPost Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 17]]
+  ↳ app/views/users/index.html.erb:11
+  Rendered users/index.html.erb within layouts/application (Duration: 70.9ms | Allocations: 22099)
+  Rendered layout layouts/application.html.erb (Duration: 225.3ms | Allocations: 55130)
+Completed 200 OK in 290ms (Views: 214.7ms | ActiveRecord: 18.8ms | Allocations: 66993)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:12 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started GET "/users/15" for 127.0.0.1 at 2024-01-13 02:59:18 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPost Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 15]]
+  ↳ app/views/users/show.html.erb:13
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 LIMIT $2[0m  [["author_id", 15], ["LIMIT", 3]]
+  ↳ app/views/users/show.html.erb:25
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:27
+  [1m[36mCACHE Post Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 15]]
+  ↳ app/views/users/show.html.erb:33
+  Rendered users/show.html.erb within layouts/application (Duration: 55.9ms | Allocations: 14361)
+  Rendered layout layouts/application.html.erb (Duration: 60.2ms | Allocations: 15614)
+Completed 200 OK in 66ms (Views: 58.6ms | ActiveRecord: 2.9ms | Allocations: 17430)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:18 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started GET "/users/15/posts/new" for 127.0.0.1 at 2024-01-13 02:59:19 +0500
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:15:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 13.3ms | Allocations: 2019)
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 3095)
+Completed 200 OK in 41ms (Views: 16.1ms | ActiveRecord: 3.9ms | Allocations: 9642)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:20 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started POST "/users/15/posts" for 127.0.0.1 at 2024-01-13 02:59:23 +0500
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"title"=>"b'J", "text"=>"vh ob;"}, "commit"=>"Create Post", "user_id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:23:in `create'
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `create'
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("author_id", "title", "text", "comments_counter", "likes_counter", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["author_id", 15], ["title", "b'J"], ["text", "vh ob;"], ["comments_counter", 0], ["likes_counter", 0], ["created_at", "2024-01-12 21:59:24.012320"], ["updated_at", "2024-01-12 21:59:24.012320"]]
+  ↳ app/controllers/posts_controller.rb:23:in `create'
+  [1m[36mUser Update All (1.1ms)[0m  [1m[33mUPDATE "users" SET "post_counter" = COALESCE("post_counter", 0) + $1 WHERE "users"."id" = $2[0m  [["post_counter", 1], ["id", 15]]
+  ↳ app/models/post.rb:18:in `increment_user_post_counter'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:23:in `create'
+Redirected to http://127.0.0.1:3000/users/15/posts/18
+Completed 302 Found in 26ms (ActiveRecord: 7.4ms | Allocations: 6486)
+
+
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 02:59:24 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (83.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  Rendered posts/show.html.erb within layouts/application (Duration: 178.4ms | Allocations: 4799)
+  Rendered layout layouts/application.html.erb (Duration: 181.7ms | Allocations: 5872)
+Completed 200 OK in 186ms (Views: 71.7ms | ActiveRecord: 110.9ms | Allocations: 7534)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:24 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started POST "/users/15/posts/18/likes" for 127.0.0.1 at 2024-01-13 02:59:26 +0500
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like", "user_id"=>"15", "post_id"=>"18"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `find_post'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Exists? (3.5ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 15], ["post_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Create (3.6ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 15], ["post_id", 18], ["created_at", "2024-01-12 21:59:26.308213"], ["updated_at", "2024-01-12 21:59:26.308213"]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mPost Update All (2.4ms)[0m  [1m[33mUPDATE "posts" SET "likes_counter" = COALESCE("likes_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["likes_counter", 1], ["id", 18]]
+  ↳ app/models/like.rb:10:in `increment_post_likes_counter'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+Redirected to http://127.0.0.1:3000/users/15/posts/18
+Completed 302 Found in 39ms (ActiveRecord: 13.7ms | Allocations: 6904)
+
+
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 02:59:26 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  Rendered posts/show.html.erb within layouts/application (Duration: 11.7ms | Allocations: 1567)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 2640)
+Completed 200 OK in 18ms (Views: 9.2ms | ActiveRecord: 5.6ms | Allocations: 3631)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:26 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started POST "/users/15/posts/18/likes" for 127.0.0.1 at 2024-01-13 02:59:44 +0500
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like", "user_id"=>"15", "post_id"=>"18"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `find_post'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Exists? (6.7ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 15], ["post_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:10:in `create'
+Redirected to http://127.0.0.1:3000/users/15/posts/18
+Completed 302 Found in 20ms (ActiveRecord: 10.9ms | Allocations: 4372)
+
+
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 02:59:44 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (2.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  Rendered posts/show.html.erb within layouts/application (Duration: 13.4ms | Allocations: 1552)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 2625)
+Completed 200 OK in 23ms (Views: 13.0ms | ActiveRecord: 4.5ms | Allocations: 3616)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:44 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started POST "/users/15/posts/18/likes" for 127.0.0.1 at 2024-01-13 02:59:45 +0500
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like", "user_id"=>"15", "post_id"=>"18"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `find_post'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 15], ["post_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:10:in `create'
+Redirected to http://127.0.0.1:3000/users/15/posts/18
+Completed 302 Found in 25ms (ActiveRecord: 7.5ms | Allocations: 6148)
+
+
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 02:59:45 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1570)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 2643)
+Completed 200 OK in 18ms (Views: 8.4ms | ActiveRecord: 1.1ms | Allocations: 3634)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:45 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started POST "/users/15/posts/18/likes" for 127.0.0.1 at 2024-01-13 02:59:45 +0500
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like", "user_id"=>"15", "post_id"=>"18"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `find_post'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 15], ["post_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:10:in `create'
+Redirected to http://127.0.0.1:3000/users/15/posts/18
+Completed 302 Found in 25ms (ActiveRecord: 5.1ms | Allocations: 4311)
+
+
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 02:59:45 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (3.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  Rendered posts/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1630)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2703)
+Completed 200 OK in 12ms (Views: 5.3ms | ActiveRecord: 4.3ms | Allocations: 7598)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:46 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started POST "/users/15/posts/18/likes" for 127.0.0.1 at 2024-01-13 02:59:46 +0500
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like", "user_id"=>"15", "post_id"=>"18"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `find_post'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Exists? (3.0ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 15], ["post_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:10:in `create'
+Redirected to http://127.0.0.1:3000/users/15/posts/18
+Completed 302 Found in 14ms (ActiveRecord: 6.6ms | Allocations: 4712)
+
+
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 02:59:46 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.8ms | Allocations: 3147)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 4220)
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 1.8ms | Allocations: 5389)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:46 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started GET "/users/15/posts/18/comments/new" for 127.0.0.1 at 2024-01-13 02:59:49 +0500
+Processing by CommentsController#new as HTML
+  Parameters: {"user_id"=>"15", "post_id"=>"18"}
+  [1m[36mPost Load (2.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `set_post'
+  Rendering layout layouts/application.html.erb
+  Rendering comments/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/comments/new.html.erb:1
+  Rendered comments/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1368)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2444)
+Completed 200 OK in 17ms (Views: 5.8ms | ActiveRecord: 3.1ms | Allocations: 5697)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:49 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started POST "/users/15/posts/18/comments" for 127.0.0.1 at 2024-01-13 02:59:55 +0500
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"text"=>"what ver"}, "commit"=>"Add comment", "user_id"=>"15", "post_id"=>"18"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:21:in `set_post'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:11:in `create'
+  [1m[36mComment Create (1.7ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "post_id", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 15], ["post_id", 18], ["text", "what ver"], ["created_at", "2024-01-12 21:59:55.065133"], ["updated_at", "2024-01-12 21:59:55.065133"]]
+  ↳ app/controllers/comments_controller.rb:11:in `create'
+  [1m[36mPost Update All (0.5ms)[0m  [1m[33mUPDATE "posts" SET "comments_counter" = COALESCE("comments_counter", 0) + $1 WHERE "posts"."id" = $2[0m  [["comments_counter", 1], ["id", 18]]
+  ↳ app/models/comment.rb:10:in `increment_post_comments_counter'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:11:in `create'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:12:in `create'
+Redirected to http://127.0.0.1:3000/users/15/posts/18
+Completed 302 Found in 20ms (ActiveRecord: 5.8ms | Allocations: 5587)
+
+
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 02:59:55 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:23
+  Rendered posts/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2894)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 3967)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.9ms | Allocations: 4958)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:55 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started POST "/users/15/posts/18/likes" for 127.0.0.1 at 2024-01-13 02:59:56 +0500
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like", "user_id"=>"15", "post_id"=>"18"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `find_post'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 15], ["post_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:10:in `create'
+Redirected to http://127.0.0.1:3000/users/15/posts/18
+Completed 302 Found in 17ms (ActiveRecord: 5.7ms | Allocations: 4286)
+
+
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 02:59:56 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:23
+  Rendered posts/show.html.erb within layouts/application (Duration: 9.9ms | Allocations: 2051)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 3124)
+Completed 200 OK in 15ms (Views: 11.2ms | ActiveRecord: 2.0ms | Allocations: 4115)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:57 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started POST "/users/15/posts/18/likes" for 127.0.0.1 at 2024-01-13 02:59:57 +0500
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Like", "user_id"=>"15", "post_id"=>"18"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `find_post'
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:3:in `current_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mLike Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 15], ["post_id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:10:in `create'
+Redirected to http://127.0.0.1:3000/users/15/posts/18
+Completed 302 Found in 22ms (ActiveRecord: 7.0ms | Allocations: 4301)
+
+
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 02:59:57 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (2.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:23
+  Rendered posts/show.html.erb within layouts/application (Duration: 14.9ms | Allocations: 2036)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 3109)
+Completed 200 OK in 20ms (Views: 14.5ms | ActiveRecord: 3.0ms | Allocations: 4100)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:57 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 02:59:59 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:23
+  Rendered posts/show.html.erb within layouts/application (Duration: 8.5ms | Allocations: 2042)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 3115)
+Completed 200 OK in 15ms (Views: 8.9ms | ActiveRecord: 4.0ms | Allocations: 4106)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 02:59:59 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
+Started GET "/users/15/posts/18" for 127.0.0.1 at 2024-01-13 03:00:01 +0500
+Processing by PostsController#show as HTML
+  Parameters: {"user_id"=>"15", "id"=>"18"}
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:37:in `find_post'
+  [1m[36mCACHE Post Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:6
+  [1m[36mComment Load (3.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 18]]
+  ↳ app/views/posts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:23
+  Rendered posts/show.html.erb within layouts/application (Duration: 13.2ms | Allocations: 2045)
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 3118)
+Completed 200 OK in 26ms (Views: 10.2ms | ActiveRecord: 7.1ms | Allocations: 4109)
+
+
+Started GET "/cart.json" for 127.0.0.1 at 2024-01-13 03:00:01 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/cart.json"):
+  
