@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :find_post, only: [:show]
   before_action :initialize_like
 
@@ -27,7 +29,14 @@ class PostsController < ApplicationController
     end
   end
 
-  private
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to user_posts_path(user_id: @post.author_id) }
+      format.js
+    end
+  end
 
   def post_params
     params.require(:post).permit(:title, :text)
