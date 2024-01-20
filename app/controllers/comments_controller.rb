@@ -24,7 +24,8 @@ class CommentsController < ApplicationController
     @comment.destroy
     @post.comments_counter -= 1
 
-    redirect_to user_post_path(@user, @post) if @post.save
+    redirect_to user_post_path(@comment.post.author, @comment.post),
+                notice: 'Comment was successfully deleted.'
   end
 
   private
