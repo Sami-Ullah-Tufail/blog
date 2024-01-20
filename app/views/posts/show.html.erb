@@ -3,7 +3,7 @@
 
 <div class="post">
   <% if can? :destroy, @post %>
-    <%= link_to "Delete Post", user_post_path(@post.author, @post), data: { turbo_method: :delete, turbo_confirm: "This post will be permanently removed. Do you want to proceed?" } %>
+  <%= button_to "DELETE POST", user_post_path(user_id:@post.author_id, id:@post.id), method: :delete, data: { turbolinks: false } %>
   <% end %>
 
   <div class="post-header">

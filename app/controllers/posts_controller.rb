@@ -31,15 +31,14 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @user = @post.author
     @post.destroy
-    @user.posts_counter -= 1
-
-    redirect_to user_posts_path(@user) if @user.save
+    respond_to do |format|
+      format.html { redirect_to user_posts_path(user_id: @post.author_id) }
+      format.js
+    end
   end
 
-  private
-
+  
   def post_params
     params.require(:post).permit(:title, :text)
   end
